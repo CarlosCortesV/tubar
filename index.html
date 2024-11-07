@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tubar - Reserva de Bares</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Tubar</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#reservas">Reservas</a></li>
+                <li><a href="#carrito">Carrito de Reservas</a></li>
+                <li><a href="#pago">Pago</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="home">
+        <h2>Bienvenido a Tubar</h2>
+        <p>La mejor plataforma para reservar en tus bares favoritos.</p>
+        <button>Explorar Bares</button>
+    </section>
+    <section id="reservas">
+        <h2>Reserva tu Bar</h2>
+        <div class="card-container">
+            <!-- Ejemplo de tarjeta de un bar -->
+            <div class="card">
+                <img src="/img/bbc.jpg" alt="Imagen del Bar 1">
+                <h3>Bar 1</h3>
+                <p>Ambiente exclusivo y bebidas premium.</p>
+                <button class="reservar-btn">Reservar</button>
+            </div>
+            <div class="card">
+                <img src="/img/beer.webp" alt="Imagen del Bar 2">
+                <h3>Bar 2</h3>
+                <p>Un lugar perfecto para una noche inolvidable.</p>
+                <button class="reservar-btn">Reservar</button>
+            </div>
+            <!-- Añadir más tarjetas de bares según sea necesario -->
+        </div>
+    </section>
+    
+    <section id="carrito">
+        <h2>Tu Carrito de Reservas</h2>
+        <!-- Detalles de los productos reservados -->
+    </section>
+    <section id="pago">
+        <h2>Confirmación y Pago</h2>
+        <!-- Confirmación de la reserva y botón para pagar -->
+    </section>
+    <footer>
+        <p>&copy; 2024 Tubar. Todos los derechos reservados.</p>
+    </footer>
+    <!-- Modal para mostrar detalles de reserva -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Detalles del Bar</h3>
+            <p id="bar-details">Aquí van los detalles del bar seleccionado.</p>
+            <button class="confirmar-reserva-btn">Confirmar Reserva</button>
+        </div>
+    </div>
+<script src="app.js"></script>
+</body>^^
+</html>
