@@ -27,3 +27,5 @@ window.addEventListener('click', (event) => {
         modal.style.display = 'none';
     }
 });
+const barRoutes = require('./routes/barRoutes');
+app.use('/api/bares', barRoutes);
