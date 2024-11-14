@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tubar - Reserva de Bares</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
     <header>
@@ -28,13 +28,13 @@
         <div class="card-container">
             <!-- Ejemplo de tarjeta de un bar -->
             <div class="card">
-                <img src="/img/bbc.jpg" alt="Imagen del Bar 1">
+                <img src="img/bbc.jpg" alt="Imagen del Bar 1">
                 <h3>Bar 1</h3>
                 <p>Ambiente exclusivo y bebidas premium.</p>
                 <button class="reservar-btn">Reservar</button>
             </div>
             <div class="card">
-                <img src="/img/beer.webp" alt="Imagen del Bar 2">
+                <img src="img/beer.webp" alt="Imagen del Bar 2">
                 <h3>Bar 2</h3>
                 <p>Un lugar perfecto para una noche inolvidable.</p>
                 <button class="reservar-btn">Reservar</button>
@@ -42,7 +42,12 @@
             <!-- Añadir más tarjetas de bares según sea necesario -->
         </div>
     </section>
-    
+    <div id="bares-container">
+        <h2>Bares Disponibles</h2>
+        <div id="card-container">
+          <!-- Aquí se insertarán dinámicamente las tarjetas de los bares -->
+        </div>
+      </div>
     <section id="carrito">
         <h2>Tu Carrito de Reservas</h2>
         <!-- Detalles de los productos reservados -->
@@ -64,5 +69,5 @@
         </div>
     </div>
 <script src="app.js"></script>
-</body>^^
+</body>
 </html>
