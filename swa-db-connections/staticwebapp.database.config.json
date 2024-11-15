@@ -29,14 +29,17 @@
     }
   },
   "entities": {
-    "Person": {
-      "source": "dbo.MyTestPersonTable",
+    "Bar": {
+      "source": "dbo.bar",
       "permissions": [
         {
           "actions": ["*"],
           "role": "anonymous"
         }
-      ]
+      ],
+      "rest": {
+        "path": "bares"
+      }
     }
   }
 }
