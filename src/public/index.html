@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tubar - Reserva de Bares</title>
     <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
@@ -15,6 +16,13 @@
                 <li><a href="#reservas">Reservas</a></li>
                 <li><a href="#carrito">Carrito de Reservas</a></li>
                 <li><a href="#pago">Pago</a></li>
+                <li><a href="#bares">Pago</a></li>
+                <!-- Añadir icono de Login -->
+                <li>
+                    <a href="login.html" class="login-icon">
+                        <i class="fas fa-user"></i> <!-- Icono de Login -->
+                    </a>
+                </li>
             </ul>
         </nav>
     </header>
@@ -31,23 +39,17 @@
                 <img src="img/bbc.jpg" alt="Imagen del Bar 1">
                 <h3>Bar 1</h3>
                 <p>Ambiente exclusivo y bebidas premium.</p>
-                <button class="reservar-btn">Reservar</button>
+                <button class="reservar-btn" onclick="mostrarModal()">Reservar</button>
             </div>
             <div class="card">
                 <img src="img/beer.webp" alt="Imagen del Bar 2">
                 <h3>Bar 2</h3>
                 <p>Un lugar perfecto para una noche inolvidable.</p>
-                <button class="reservar-btn">Reservar</button>
+                <button class="reservar-btn" onclick="mostrarModal()">Reservar</button>
             </div>
             <!-- Añadir más tarjetas de bares según sea necesario -->
         </div>
     </section>
-    <div id="bares-container">
-        <h2>Bares Disponibles</h2>
-        <div id="card-container">
-          <!-- Aquí se insertarán dinámicamente las tarjetas de los bares -->
-        </div>
-      </div>
     <section id="carrito">
         <h2>Tu Carrito de Reservas</h2>
         <!-- Detalles de los productos reservados -->
@@ -59,15 +61,26 @@
     <footer>
         <p>&copy; 2024 Tubar. Todos los derechos reservados.</p>
     </footer>
-    <!-- Modal para mostrar detalles de reserva -->
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h3>Detalles del Bar</h3>
-            <p id="bar-details">Aquí van los detalles del bar seleccionado.</p>
-            <button class="confirmar-reserva-btn">Confirmar Reserva</button>
-        </div>
+
+<!-- Modal para mostrar detalles de reserva -->
+<div id="modal" class="modal">
+    <div class="modalbar-overlay" id="modal-overlay"></div>
+    <div class="modalbar-container" id="modal-container">
+        <!-- X para cerrar el modal -->
+        <span class="close" id="close-modal">&times;</span>
+        
+        <h3>Detalles de la Reserva</h3>
+        <input type="number" class="modalbar-input" id="id-mesa" placeholder="ID de Mesa" required>
+        <input type="date" class="modalbar-input" id="fecha-reserva" required>
+        <input type="time" class="modalbar-input" id="hora-reserva" required>
+        <input type="number" class="modalbar-input" id="numero-personas" placeholder="Número de Personas" required>
+        <button class="modalbar-btn" onclick="confirmarReserva()">Confirmar Reserva</button>
     </div>
-<script src="app.js"></script>
+</div>
+
+
+
+    <script src="app.js"></script>
+    <script src="modal.js"></script>
 </body>
 </html>
