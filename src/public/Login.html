@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Inicio de Sesión</title>
-    <link rel="stylesheet" href="styles.css"> 
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body class="login-body">
-    <div class="login-container">
-        <h1 class="login-title">Iniciar Sesión en TuBar</h1>
-        <input type="text" class="login-input-field" placeholder="Correo Electrónico">
-        <input type="password" class="login-input-field" placeholder="Contraseña">
-        <button class="login-btn">Iniciar Sesión</button>
-    </div>
+    <form id="loginForm">
+        <div class="login-container">
+            <h1 class="login-title">Iniciar Sesión en TuBar</h1>
+            <input type="text" id="username" class="login-input-field" placeholder="Usuario" required>
+            <input type="password" id="password" class="login-input-field" placeholder="Contraseña" required>
+            <button type="submit" class="login-btn">Ingresar</button>
+            <p id="message" style="color: red; display: none;">Credenciales inválidas</p>
+        </div>
+    </form>
+    <script src="app.js"></script>
+    <script src="modal.js"></script>
 </body>
 </html>

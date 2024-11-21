@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil del Usuario</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bienvenido, <span id="username"></span>!</h1>
+        <p>Tu ID es: <span id="userid"></span></p>
+        <p><a href="/">Cerrar Sesión</a></p>
+    </div>
+    <script>
+        // Trae los datos del usuario desde el servidor
+        fetch('/profile')
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    window.location.href = '/login.html'; // Redirige si no está autenticado
+                }
+            })
+            .then(user => {
+                document.getElementById('username').textContent = user.username;
+                document.getElementById('userid').textContent = user.id;
+            })
+            .catch(error => console.error('Error:', error));
+    </script>
+</body>
+</html>
