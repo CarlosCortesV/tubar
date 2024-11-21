@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="login-body">
+    
     <form id="loginForm">
         <div class="login-container">
             <h1 class="login-title">Iniciar Sesión en TuBar</h1>
@@ -16,6 +17,26 @@
             <p id="message" style="color: red; display: none;">Credenciales inválidas</p>
         </div>
     </form>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    const response = await fetch('/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+    });
+
+    if (response.ok) {
+        window.location.href = '/profile'; // Cambia a la ruta del dashboard
+    } else {
+        document.getElementById('message').style.display = 'block';
+    }
+});
+
+    </script>
     <script src="app.js"></script>
     <script src="modal.js"></script>
 </body>

@@ -1,4 +1,5 @@
 const express = require('express');
+const session = require('express-session');
 const bodyParser = require('body-parser');
 const { connectDB } = require('./config/dbConfig');
 const path = require('path');
@@ -17,6 +18,13 @@ app.use('/api/reservas', reservationRoutes);
 app.listen(3000, () => {
   console.log('Server running on http://localhost:3000');
 });
+
+app.use(session({
+  secret: 'tu_clave_secreta',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: false }, // Cambia a true si usas HTTPS
+}));
 
 // Import routes
 app.use(express.static(path.join(__dirname, 'src', 'public')));
@@ -46,4 +54,15 @@ app.post('/login', async (req, res) => {
       console.error(err);
       res.status(500).send('Error del servidor');
   }
+});
+app.get('/profile', (req, res) => {
+  if (!req.session.user) {
+      return res.status(401).json({ error: 'No autenticado' });
+  }
+
+  // Si está autenticado, muestra los datos del usuario
+  res.json({
+      username: req.session.user.username,
+      id: req.session.user.id,
+  });
 });

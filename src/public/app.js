@@ -1,21 +1,5 @@
 // app.js
-document.getElementById('loginForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
 
-    const response = await fetch('/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
-    });
-
-    if (response.ok) {
-        window.location.href = '/profile'; // Cambia a la ruta del dashboard
-    } else {
-        document.getElementById('message').style.display = 'block';
-    }
-});
 document.addEventListener('DOMContentLoaded', async () => {
     try {
         const response = await fetch('/api/bares');
@@ -24,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const baresList = document.getElementById('card-container');
         bares.forEach(bar => {
             const barCard = document.createElement('div');
-            barCard.classList.add('card');
+            barCard.classList.add('barcard');
             barCard.innerHTML = `
                 <h3>${bar.nombre_bar}</h3>
                 <p>Ubicación: ${bar.ubicación}</p>

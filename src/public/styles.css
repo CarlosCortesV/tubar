@@ -47,7 +47,12 @@ section {
     justify-content: center;
     margin-top: 2rem;
 }
-
+#card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center; 
+}
 .card {
     background-color: #333;
     border-radius: 8px;
@@ -57,7 +62,16 @@ section {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease;
 }
-
+.barcard {
+    
+    box-sizing: border-box; /* Incluye padding y bordes en el tamaño total */
+    border: 1px solid #ccc;
+    padding: 16px;
+    margin: 0;
+    text-align: center;
+    width: 400px;
+    max-width: calc(33.333% - 32px); /* Máximo ancho por tarjeta */
+}
 .card:hover {
     transform: translateY(-5px);
 }
