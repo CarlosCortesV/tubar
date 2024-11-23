@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Nuevo Bar</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bares-body"> <!-- Añadido class "bares-body" al body -->
+    <header class="bares-header"> <!-- Corregido el class del header -->
+        <img src="./img/TuBar Fondo Transparente letras blancas.png" alt="Tubar" class="profile-logo">
+        <nav>
+            <ul class="bares-nav"> <!-- Cambiado el class de "profile-nav" a "bares-nav" -->
+                <li><a href="profile.html">Inicio</a></li>
+                <li><a href="Bar.html">Bares</a></li>
+                <li><a href="Mesa.html">Mesas</a></li>
+                <li><a href="#Productos">productos</a></li>
+            </ul>
+        </nav>
+        <!-- Botón de Cerrar Sesión -->
+        <button class="profile-logout-btn" onclick="logout()">Cerrar Sesión</button>
+    </header>
+
+    <main class="bares-main">
+        <h1>Crear Nuevo Bar</h1>
+        <form class="bares-form" id="bar-form">
+            <div class="bares-input-group">
+                <label for="nombre-bar">Nombre del Bar:</label>
+                <input type="text" id="nombre-bar" name="nombre-bar" placeholder="Nombre del bar" required>
+                <span class="error-message" id="error-nombre"></span>
+            </div>
+
+            <div class="bares-input-group">
+                <label for="ubicacion-bar">Ubicación:</label>
+                <input type="text" id="ubicacion-bar" name="ubicacion-bar" placeholder="Dirección" required>
+                <span class="error-message" id="error-ubicacion"></span>
+            </div>
+
+            <div class="bares-input-group">
+                <label for="telefono-bar">Teléfono:</label>
+                <input type="text" id="telefono-bar" name="telefono-bar" placeholder="Número de teléfono" required>
+                <span class="error-message" id="error-telefono"></span>
+            </div>
+
+            <div class="bares-input-group">
+                <label for="email-bar">Email de Contacto:</label>
+                <input type="email" id="email-bar" name="email-bar" placeholder="Correo electrónico" required>
+                <span class="error-message" id="error-email"></span>
+            </div>
+
+            <div class="bares-input-group">
+                <label for="descripcion-bar">Descripción:</label>
+                <textarea id="descripcion-bar" name="descripcion-bar" rows="4" placeholder="Descripción del bar" required></textarea>
+                <span class="error-message" id="error-descripcion"></span>
+            </div>
+
+            <div class="bares-input-group">
+                <label for="horario-apertura">Horario de Apertura:</label>
+                <input type="time" id="horario-apertura" name="horario-apertura" required>
+                <span class="error-message" id="error-apertura"></span>
+            </div>
+
+            <div class="bares-input-group">
+                <label for="horario-cierre">Horario de Cierre:</label>
+                <input type="time" id="horario-cierre" name="horario-cierre" required>
+                <span class="error-message" id="error-cierre"></span>
+            </div>
+
+            <div class="bares-input-group">
+                <label for="capacidad-bar">Capacidad Máxima:</label>
+                <input type="number" id="capacidad-bar" name="capacidad-bar" placeholder="Capacidad máxima" required>
+                <span class="error-message" id="error-capacidad"></span>
+            </div>
+
+            <button type="submit" class="bares-btn">Guardar Bar</button>
+            <div id="form-status"></div>
+        </form>
+    </main>
+
+    <script>
+        document.getElementById('bar-form').addEventListener('submit', function (event) {
+            event.preventDefault(); // Evita que el formulario se envíe de forma convencional
+
+            // Limpiar mensajes de error
+            clearErrorMessages();
+
+            // Validar campos
+            let valid = true;
+            valid &= validateField('nombre-bar', /^[a-zA-Z\s]{3,100}$/, 'error-nombre', 'Por favor ingrese un nombre válido');
+            valid &= validateField('ubicacion-bar', /^[a-zA-Z0-9\s,\.]{5,255}$/, 'error-ubicacion', 'Por favor ingrese una ubicación válida');
+            valid &= validateField('telefono-bar', /^[0-9]{10}$/, 'error-telefono', 'El teléfono debe tener 10 dígitos');
+            valid &= validateField('email-bar', /^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'error-email', 'Por favor ingrese un correo electrónico válido');
+            valid &= validateField('descripcion-bar', /^.{10,500}$/, 'error-descripcion', 'La descripción debe tener entre 10 y 500 caracteres');
+            valid &= validateField('horario-apertura', /.+/, 'error-apertura', 'Por favor ingrese un horario de apertura');
+            valid &= validateField('horario-cierre', /.+/, 'error-cierre', 'Por favor ingrese un horario de cierre');
+            valid &= validateField('capacidad-bar', /^[0-9]{1,4}$/, 'error-capacidad', 'La capacidad máxima debe ser un número válido');
+
+            if (valid) {
+                // Si es válido, mostrar el mensaje de éxito
+                document.getElementById('form-status').innerHTML = `<p class="success-message">¡Bar creado con éxito!</p>`;
+                // Aquí podrías hacer una solicitud al servidor para guardar el bar (por ejemplo, usando fetch).
+            } else {
+                // Si no es válido, mostrar un mensaje de error general
+                document.getElementById('form-status').innerHTML = `<p class="error-message">Por favor, corrija los errores en el formulario.</p>`;
+            }
+        });
+
+        function validateField(id, regex, errorId, errorMessage) {
+            const field = document.getElementById(id);
+            const errorSpan = document.getElementById(errorId);
+            if (!regex.test(field.value)) {
+                errorSpan.textContent = errorMessage;
+                field.classList.add('input-error');
+                return false;
+            } else {
+                errorSpan.textContent = '';
+                field.classList.remove('input-error');
+                return true;
+            }
+        }
+
+        function clearErrorMessages() {
+            const errorMessages = document.querySelectorAll('.error-message');
+            errorMessages.forEach(msg => msg.textContent = '');
+            const inputFields = document.querySelectorAll('input, textarea');
+            inputFields.forEach(field => field.classList.remove('input-error'));
+        }
+
+        
+        function logout() {
+            fetch('/logout', { method: 'POST' }) // Simula un endpoint de logout
+                .then(() => {
+                    window.location.href = '/login.html';
+                })
+                .catch(error => console.error('Error al cerrar sesión:', error));
+        }
+    </script>
+</body>
+</html>

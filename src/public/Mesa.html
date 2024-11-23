@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Mesa</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="bares-header">
+        <img src="./img/TuBar Fondo Transparente letras blancas.png" alt="Tubar" class="profile-logo">
+        <nav>
+            <ul class="bares-nav">
+                <li><a href="profile.html">Inicio</a></li>
+                <li><a href="Bar.html">Bares</a></li>
+                <li><a href="Mesa.html">Mesas</a></li>
+                <li><a href="#Productos">productos</a></li>
+            </ul>
+        </nav>
+        <button class="profile-logout-btn" onclick="logout()">Cerrar Sesión</button>
+    </header>
+
+    <div class="mesas-body"> <!-- Cambié 'body' por 'mesas-body' -->
+        <h1>Mesas</h1>
+        <form class="crear-form" id="crear-mesa-form">
+            <!-- Campo para seleccionar el Bar -->
+            <label for="id-bar">Seleccionar Bar:</label>
+            <select id="id-bar" name="id-bar" required>
+                <option value="" disabled selected>Seleccione un Bar</option>
+                <!-- Los bares se agregarán aquí dinámicamente -->
+            </select>
+
+            <label for="numero-mesa">Número de Mesa:</label>
+            <input type="number" id="numero-mesa" name="numero-mesa" required>
+
+            <label for="capacidad-mesa">Capacidad:</label>
+            <input type="number" id="capacidad-mesa" name="capacidad-mesa" required>
+
+            <label for="ubicacion-mesa">Ubicación:</label>
+            <input type="text" id="ubicacion-mesa" name="ubicacion-mesa" required>
+
+            <button type="submit" class="crear-btn">Guardar Mesa</button>
+        </form>
+    </div> <!-- Fin del contenedor .mesas-body -->
+
+    <script>
+        // Función para cargar los bares
+        function cargarBares() {
+            fetch('/api/bares')  // Llamada al endpoint para obtener los bares
+                .then(response => response.json())
+                .then(data => {
+                    const selectBar = document.getElementById('id-bar');
+                    data.forEach(bar => {
+                        const option = document.createElement('option');
+                        option.value = bar.id_bar;  // ID del bar
+                        option.textContent = bar.nombre_bar;  // Nombre del bar
+                        selectBar.appendChild(option); // Agrega la opción al select
+                    });
+                })
+                .catch(error => console.error('Error al cargar bares:', error));
+        }
+
+        // Llamar la función al cargar la página
+        window.onload = cargarBares;
+
+        // Función para enviar el formulario de creación de mesa
+        document.getElementById('crear-mesa-form').addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevenir que la página se recargue
+
+            // Obtener los datos del formulario
+            const formData = new FormData(this);
+
+            // Enviar los datos al servidor
+            fetch('/api/mesas/crear', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => alert('Mesa creada con éxito'))
+            .catch(error => console.error('Error al crear mesa:', error));
+        });
+
+        // Función para el logout
+        function logout() {
+            fetch('/logout', { method: 'POST' })
+                .then(() => {
+                    window.location.href = '/login.html';
+                })
+                .catch(error => console.error('Error al cerrar sesión:', error));
+        }
+    </script>
+</body>
+</html>
