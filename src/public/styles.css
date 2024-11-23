@@ -384,3 +384,352 @@ header {
     color: #ddd; /* Color claro para el placeholder */
 }
    
+
+/*profile */
+.user-info, .reservations, .actions, .recommended-bars {
+    margin: 20px auto;
+    padding: 20px;
+    background: #444;
+    color: #fff;
+    border-radius: 5px;
+    max-width: 600px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    color: #f39c12;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Encabezado */
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+}
+
+.profile-logo {
+    height: 100px; /* Tamaño del logo */
+}
+
+.profile-nav {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.profile-nav li {
+    margin: 0 10px;
+}
+
+.profile-nav li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.profile-nav li a:hover {
+    text-decoration: underline;
+}
+
+/* Botón de Cerrar Sesión */
+.profile-logout-btn {
+    background-color: #e74c3c; /* Rojo */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.profile-logout-btn:hover {
+    background-color: #c0392b;
+}
+
+/* Contenedor del perfil */
+.profile-container {
+    text-align: center;
+    margin: 100px auto;
+    background: #333; /* Fondo negro */
+    color: #fff; /* Texto blanco */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    max-width: 400px;
+}
+
+/* Información adicional del usuario */
+.profile-user-info {
+    text-align: center;
+    margin: 20px auto;
+    background: #444; /* Fondo gris oscuro */
+    color: #fff; /* Texto blanco */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+}
+
+.profile-user-info h2 {
+    color: #f39c12;
+}
+
+
+/*BARES*/
+/* Diseño general */
+.bares-body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Cambiado para que el contenido esté al inicio (debajo del header) */
+    height: 100vh;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding-top: 250px; /* Aumento el espacio en la parte superior para separar más el formulario */
+}
+
+/* Encabezado */
+.bares-header {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    flex-wrap: nowrap;
+}
+
+.bares-logo {
+    height: 80px;
+}
+
+.bares-nav {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+.bares-nav li {
+    margin: 0 15px;
+}
+
+.bares-nav li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.bares-nav li a:hover {
+    text-decoration: underline;
+}
+
+/* Formulario */
+.bares-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.bares-form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.bares-input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.bares-input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+    font-size: 14px;
+}
+
+.bares-input-group input,
+.bares-input-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.bares-input-group input:focus,
+.bares-input-group textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+}
+
+.bares-btn {
+    background-color: #ff6347;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%; /* Botón con el mismo ancho que el formulario */
+}
+
+.bares-btn:hover {
+    background-color: #ff6347;
+}
+
+/* Mensajes de error */
+.input-error {
+    border-color: red;
+    box-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.success-message {
+    color: green;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+/* Animación para el fade-in del formulario */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+/*mesas*/
+
+.mesas-body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 40px;
+    background-color: #f4f4f4;
+}
+
+.bares-header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.profile-logo {
+    max-width: 200px;
+}
+
+.bares-nav {
+    list-style-type: none;
+    padding: 0;
+}
+
+.bares-nav li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.bares-nav a {
+    color: white;
+    text-decoration: none;
+}
+
+.profile-logout-btn {
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.mesas-body {
+    padding: 40px;
+    margin-top: 50px;
+}
+
+.mesas-body h1 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.crear-form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.crear-form label {
+    display: block;
+    margin-bottom: 10px;
+    color: #555;
+    font-weight: bold;
+}
+
+.crear-form input, .crear-form select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.crear-btn {
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    padding: 15px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.crear-btn:hover {
+    background-color: #e55347;
+}
