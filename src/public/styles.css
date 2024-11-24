@@ -1,4 +1,4 @@
-/* Reset básico */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -6,19 +6,24 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     background-color: #222;
     color: #f4f4f4;
     line-height: 1.6;
 }
 
 header {
-    background: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
     color: #fff;
-    padding: 1rem;
-    text-align: center;
+    height: 120px;
 }
-
+.logo img {
+    height: 150px; /* Ajusta el tamaño de la imagen del logo */
+}
 header h1 {
     margin-bottom: 0.5rem;
 }
@@ -26,13 +31,40 @@ header h1 {
 nav ul {
     list-style: none;
     display: flex;
-    justify-content: center;
-    gap: 2rem;
+    justify-content: flex-end;
+    gap: 3rem;
+}
+.logo{
+    width: 20%;
+}
+nav{
+    width: 80%;
+    padding-right: 5%;
+}
+/* Estilo para la lista de navegación */
+.nav-list {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    align-items: center; /* Asegura la alineación vertical */
+}
+
+.nav-list li {
+    margin-left: 20px;
+}
+
+.nav-list a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 5px;
 }
 
 nav a {
     color: #f4f4f4;
     text-decoration: none;
+    font-weight: 600;
 }
 
 section {
@@ -45,7 +77,7 @@ section {
     flex-wrap: wrap;
     gap: 2rem;
     justify-content: center;
-    margin-top: 2rem;
+    
 }
 #card-container {
     display: flex;
@@ -107,19 +139,65 @@ section {
     background-color: #e55347;
 }
 
-#home button {
-    background-color: #ff6347;
+.principal{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-bottom: 10% ;
+    padding-top: 2%;
+}
+
+.text-home{
     color: #fff;
-    padding: 0.5rem 1rem;
+    font-size: 85px;
+    font-weight: 900;
+}
+.text-home-p{
+    color: #fff;
+    font-size: 25px;
+    font-weight: 500;
+    margin-top: 5%;
+    margin-bottom: 7%;
+}
+#home{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 80vh;
+    width: 50%;
+    padding-left: 10%;
+    text-align: left;
+    line-height: 1.2;
+}
+
+.button-home{
+    background-color: #ff6347;
+    width: 30%;
+    height: 8%;
+    font-size: 15px;
+    font-weight: 900;
+    color: #fff;
     border: none;
     cursor: pointer;
-    margin-top: 1rem;
+    border: 10px;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
 }
 
 #home button:hover {
     background-color: #e55347;
 }
-
+#reservas{
+    display: flex;
+    justify-content: center;
+    width: 50%;
+}
 footer {
     background: #333;
     color: #fff;
@@ -171,13 +249,6 @@ footer {
     border-radius: 4px;
 }
 
-/*Login*/
-/* Reset básico */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 /* Estilos del login */
 body.login-body {
@@ -229,35 +300,6 @@ body.login-body {
     background-color: darkred;
 }
 
-
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #333; /* Color de fondo del header */
-    color: white;
-}
-
-/* Estilo para la lista de navegación */
-.nav-list {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-    align-items: center; /* Asegura la alineación vertical */
-}
-
-.nav-list li {
-    margin-left: 20px;
-}
-
-.nav-list a {
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-    padding: 5px;
-}
 
 
 /*modal bar reserva*/

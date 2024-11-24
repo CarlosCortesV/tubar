@@ -7,18 +7,16 @@ const sql = require('mssql');
 
 const app = express();
 app.use(bodyParser.json());
-
-connectDB();
 const barRoutes = require('./routes/barRoutes');
 const reservationRoutes = require('./routes/reservationRoutes');
 
-// Usa las rutas de API
-app.use('/api/bares', barRoutes);
-app.use('/api/reservas', reservationRoutes);
+connectDB();
 app.listen(3000, () => {
   console.log('Server running on http://localhost:3000');
 });
-
+// Usa las rutas de API
+app.use('/api/bares', barRoutes);
+app.use('/api/reservas', reservationRoutes);
 app.use(session({
   secret: 'tu_clave_secreta',
   resave: false,

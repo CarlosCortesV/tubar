@@ -10,7 +10,9 @@
 </head>
 <body>
     <header>
-        <img src="./img/TuBar Fondo Transparente letras blancas.png" alt="Tubar" height="150px">
+        <div class="logo">
+            <img src="./img/TuBar Fondo Transparente letras blancas.png" alt="Tubar">
+        </div>
         <nav>
             <ul>
                 <li><a href="#home">Inicio</a></li>
@@ -25,30 +27,31 @@
             </ul>
         </nav>
     </header>
-    <section id="home">
-        <h2>Bienvenido a Tubar</h2>
-        <p>La mejor plataforma para reservar en tus bares favoritos.</p>
-        <button>Explorar Bares</button>
-    </section>
-    <section id="reservas">
-        <h2>Reserva tu Bar</h2>
-        <div class="card-container">
-            <!-- Ejemplo de tarjeta de un bar -->
-            <div class="card">
-                <img src="img/bbc.jpg" alt="Imagen del Bar 1">
-                <h3>Bar 1</h3>
-                <p>Ambiente exclusivo y bebidas premium.</p>
-                <button class="reservar-btn" onclick="mostrarModal()">Reservar</button>
+    <div class="principal">
+        <section id="home">
+            <h2 class="text-home">BIENVENIDO<br>A TUBAR!</h2>
+            <p class="text-home-p">LA MEJOR PLATAFORMA PARA RESERVAR<br>EN TUS BARES FAVORITOS.</p>
+            <button type="button" class="button-home">EXPLORAR BARES</button>
+        </section>
+        <section id="reservas">
+            <div class="card-container">
+                <!-- Ejemplo de tarjeta de un bar -->
+                <div class="card">
+                    <img src="img/bbc.jpg" alt="Imagen del Bar 1">
+                    <h3>Luna</h3>
+                    <p>Ambiente exclusivo y bebidas premium.</p>
+                    <button class="reservar-btn" onclick="mostrarModal()">Reservar</button>
+                </div>
+                <div class="card">
+                    <img src="img/beer.webp" alt="Imagen del Bar 2">
+                    <h3>Gongola</h3>
+                    <p>Un lugar perfecto para una noche inolvidable.</p>
+                    <button class="reservar-btn" onclick="mostrarModal()">Reservar</button>
+                </div>
+                <!-- Añadir más tarjetas de bares según sea necesario -->
             </div>
-            <div class="card">
-                <img src="img/beer.webp" alt="Imagen del Bar 2">
-                <h3>Bar 2</h3>
-                <p>Un lugar perfecto para una noche inolvidable.</p>
-                <button class="reservar-btn" onclick="mostrarModal()">Reservar</button>
-            </div>
-            <!-- Añadir más tarjetas de bares según sea necesario -->
-        </div>
-    </section>
+        </section>
+    </div>
     <div id="card-container"></div>
     <section id="carrito">
         <h2>Tu Carrito de Reservas</h2>

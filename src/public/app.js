@@ -1,5 +1,3 @@
-// app.js
-
 document.addEventListener('DOMContentLoaded', async () => {
     try {
         const response = await fetch('/api/bares');
