@@ -16,7 +16,7 @@
         <nav>
             <ul>
                 <li><a href="#home">Inicio</a></li>
-                <li><a href="#reservas">Reservas</a></li>
+                <li><a href="reserva.html">Reservas</a></li>
                 <li><a href="#carrito">Carrito de Reservas</a></li>
                 <li><a href="#pago">Pago</a></li>
                 <li>
@@ -40,13 +40,17 @@
                     <img src="img/bbc.jpg" alt="Imagen del Bar 1">
                     <h3>Luna</h3>
                     <p>Ambiente exclusivo y bebidas premium.</p>
-                    <button class="reservar-btn" onclick="mostrarModal()">Reservar</button>
+                    <form action="/login.html" method="get">
+                        <button type="submit" class="reservar-btn">Reservar</button>
+                    </form>
                 </div>
                 <div class="card">
                     <img src="img/beer.webp" alt="Imagen del Bar 2">
                     <h3>Gongola</h3>
                     <p>Un lugar perfecto para una noche inolvidable.</p>
-                    <button class="reservar-btn" onclick="mostrarModal()">Reservar</button>
+                    <form action="/login.html" method="get">
+                        <button type="submit" class="reservar-btn">Reservar</button>
+                    </form>
                 </div>
                 <!-- Añadir más tarjetas de bares según sea necesario -->
             </div>

@@ -5,19 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="shortcut icon" href="./img/TuBar Fondo Transparente letras blancas.png" />
 </head>
-<body class="login-body">
-    
-    <form id="loginForm">
-        <div class="login-container">
-            <h1 class="login-title">Iniciar Sesión en TuBar</h1>
-            <input type="text" id="username" class="login-input-field" placeholder="Usuario" required>
-            <input type="password" id="password" class="login-input-field" placeholder="Contraseña" required>
-            <button type="submit" class="login-btn">Ingresar</button>
-            <p id="message" style="color: red; display: none;">Credenciales inválidas</p>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="./img/TuBar Fondo Transparente letras blancas.png" alt="Tubar">
         </div>
-    </form>
+        <nav>
+            <ul>
+                <li><a href="/index.html">Inicio</a></li>
+                <li>
+                    <a href="login.html" class="login-icon">
+                        <i class="fas fa-user"></i> <!-- Icono de Login -->
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="login-body">
+        <form id="loginForm">
+            <div class="login-container">
+                <h1 class="login-title">Iniciar Sesión en TuBar</h1>
+                <input type="text" id="username" class="login-input-field" placeholder="Usuario" required>
+                <input type="password" id="password" class="login-input-field" placeholder="Contraseña" required>
+                <button type="submit" class="login-btn">Ingresar</button>
+                <p id="message" style="color: red; display: none;">Credenciales inválidas</p>
+            </div>
+        </form>
+    </div>
+    
     <script>
         document.getElementById('loginForm').addEventListener('submit', async (e) => {
     e.preventDefault();

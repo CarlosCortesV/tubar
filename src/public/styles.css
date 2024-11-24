@@ -251,7 +251,7 @@ footer {
 
 
 /* Estilos del login */
-body.login-body {
+.login-body {
     font-family: Arial, sans-serif;
     background-color: #222; /* Color de fondo del CSS proporcionado */
     color: #f4f4f4;
@@ -461,7 +461,7 @@ h2 {
 }
 
 .profile-logo {
-    height: 100px; /* Tamaño del logo */
+    height: 150px; /* Tamaño del logo */
 }
 
 .profile-nav {
@@ -715,7 +715,6 @@ h2 {
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-    margin-top: 20px;
 }
 
 .mesas-body {
