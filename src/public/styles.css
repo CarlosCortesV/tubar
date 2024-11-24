@@ -397,15 +397,15 @@ header {
 }
 
 h2 {
-    color: #f39c12;
+    color: #fff;
 }
 
 
-body {
+.profile-body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #222;
 }
 
 /* Encabezado */
@@ -483,7 +483,7 @@ body {
 }
 
 .profile-user-info h2 {
-    color: #f39c12;
+    color: #fff;
 }
 
 
@@ -491,7 +491,7 @@ body {
 /* Diseño general */
 .bares-body {
     font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
+    background-color: #222;
     margin: 0;
     padding: 0;
     display: flex;
@@ -500,13 +500,13 @@ body {
     height: 100vh;
     flex-direction: column;
     box-sizing: border-box;
-    padding-top: 250px; /* Aumento el espacio en la parte superior para separar más el formulario */
+    padding-top: 300px; /* Aumento el espacio en la parte superior para separar más el formulario */
 }
 
 /* Encabezado */
 .bares-header {
     background-color: #333;
-    color: #fff;
+    color: #222;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -641,17 +641,9 @@ body {
 
 
 /*mesas*/
-
-.mesas-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 40px;
-    background-color: #f4f4f4;
-}
-
 .bares-header {
     background-color: #333;
-    color: white;
+    color:  #333;
     padding: 20px;
     text-align: center;
 }
