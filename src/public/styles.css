@@ -122,6 +122,7 @@ section {
     padding: 0 1rem;
     color: #ccc;
     font-size: 0.9rem;
+    font-weight: 600;
 }
 
 .reservar-btn {
@@ -150,7 +151,7 @@ section {
 }
 
 .text-home{
-    color: #fff;
+    color: #f1d024;
     font-size: 85px;
     font-weight: 900;
 }

@@ -78,6 +78,45 @@
     </main>
 
     <script>
+        document.getElementById('bar-form').addEventListener('submit', async function (event) {
+            event.preventDefault();
+            const barData = {
+                nombre_bar: document.getElementById('nombre-bar').value,
+                ubicacion: document.getElementById('ubicacion-bar').value,
+                telefono: document.getElementById('telefono-bar').value,
+                email_contacto: document.getElementById('email-bar').value,
+                descripcion: document.getElementById('descripcion-bar').value,
+
+                capacidad_maxima: document.getElementById('capacidad-bar').value
+            };
+
+            try {
+                const response = await fetch('/api/bares/crear', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(barData)
+                });
+
+                if (response.ok) {
+                    document.getElementById('form-status').innerHTML = '<p class="success-message">¡Bar creado con éxito!</p>';
+                } else {
+                    document.getElementById('form-status').innerHTML = '<p class="error-message">Error al crear el bar. Inténtalo de nuevo.</p>';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('form-status').innerHTML = '<p class="error-message">Ocurrió un error. Inténtalo más tarde.</p>';
+            }
+        });
+
+        function logout() {
+            fetch('/logout', { method: 'POST' })
+                .then(() => {
+                    window.location.href = '/login.html';
+                })
+                .catch(error => console.error('Error al cerrar sesión:', error));
+        }
         document.getElementById('bar-form').addEventListener('submit', function (event) {
             event.preventDefault(); // Evita que el formulario se envíe de forma convencional
 
@@ -97,7 +136,8 @@
 
             if (valid) {
                 // Si es válido, mostrar el mensaje de éxito
-                document.getElementById('form-status').innerHTML = `<p class="success-message">¡Bar creado con éxito!</p>`;
+                    
+
                 // Aquí podrías hacer una solicitud al servidor para guardar el bar (por ejemplo, usando fetch).
             } else {
                 // Si no es válido, mostrar un mensaje de error general
@@ -134,6 +174,8 @@
                 })
                 .catch(error => console.error('Error al cerrar sesión:', error));
         }
+        
     </script>
+    <script src="app.js"></script>
 </body>
 </html>

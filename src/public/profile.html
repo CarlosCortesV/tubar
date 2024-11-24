@@ -7,14 +7,14 @@
     <link rel="stylesheet" href="./styles.css">
     <link rel="shortcut icon" href="./img/TuBar Fondo Transparente letras blancas.png" />
 </head>
-<body>
+<body data-username="adminbar">
     <!-- Encabezado -->
     <header class="profile-header">
         <img src="./img/TuBar Fondo Transparente letras blancas.png" alt="Tubar" class="profile-logo">
         <nav>
             <ul class="profile-nav">
                 <li><a href="/">Inicio</a></li>
-                <li><a href="Bar.html">Bares</a></li>
+                <li id="menu-bares" style="display: none;"><a href="Bar.html">Bares</a></li>
                 <li><a href="Mesa.html">Mesas</a></li>
                 <li><a href="#Productos">Productos</a></li>
             </ul>
@@ -63,6 +63,19 @@
                 })
                 .catch(error => console.error('Error al cerrar sesión:', error));
         }
+            document.addEventListener('DOMContentLoaded', () => {
+        // Obtener el nombre de usuario desde el atributo data
+        const username = document.body.getAttribute('data-username');
+
+        // Mostrar u ocultar el menú de bares según el nombre de usuario
+        const menuBares = document.getElementById('menu-bares');
+        if (username === 'adminbar') {
+            menuBares.style.display = 'block';
+        } else {
+            menuBares.style.display = 'none';
+        }
+    });
+
     </script>
 </body>
 </html>
