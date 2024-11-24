@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const baresList = document.getElementById('card-container');
         bares.forEach(bar => {
             const barCard = document.createElement('div');
-            barCard.classList.add('barcard');
+            barCard.classList.add('card');
             barCard.innerHTML = `
                 <h3>${bar.nombre_bar}</h3>
                 <p>Ubicación: ${bar.ubicación}</p>
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <p>Descripción: ${bar.descripción}</p>
                 <p>Horario: ${bar.horario_apertura} - ${bar.horario_cierre}</p>
                 <p>Capacidad Máxima: ${bar.capacidad_maxima}</p>
-                <button class="reservar-btn">Reservar</button>
+                <button class="reservar-btn" onclick="mostrarModal()">Reservar</button>
             `;
             baresList.appendChild(barCard);
         });
