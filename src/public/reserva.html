@@ -32,7 +32,10 @@
     </header>
     <h1 class="reserva">Reserva TuBar, YA!</h1>
     <div id="card-container" class="card-container-class"></div>
-
+    <div class="profile-container">
+        <h1>Bienvenido, <span id="username"></span>!</h1>
+        <p>Tu ID es: <span id="userid"></span></p>
+    </div>
     <footer>
         <p>&copy; 2024 Tubar. Todos los derechos reservados.</p>
     </footer>
@@ -46,13 +49,27 @@
         
         <h3>Detalles de la Reserva</h3>
         <input type="number" class="modalbar-input" id="id-mesa" placeholder="ID de Mesa" required>
-        <input type="date" class="modalbar-input" id="fecha-reserva" required>
-        <input type="time" class="modalbar-input" id="hora-reserva" required>
+        <input type="text" class="modalbar-input" id="fecha-reserva" placeholder="Fecha de Reserva" required>
+        <input type="text" class="modalbar-input" id="hora-reserva" placeholder="Hora de Reserva" required>
         <input type="number" class="modalbar-input" id="numero-personas" placeholder="Número de Personas" required>
+        <input type="hidden" id="id_bar" />
         <button class="modalbar-btn" onclick="confirmarReserva()">Confirmar Reserva</button>
     </div>
 </div>
     <script>
+        fetch('/profile-data')
+            .then(response => {
+                if (response.ok) {
+                    return response.json(); // Retorna el JSON si la respuesta es exitosa
+                } else {
+                    // Redirigir al login si no está autenticado
+                    window.location.href = '/login.html';
+                }
+            })
+            .then(user => {
+                document.getElementById('userid').textContent = user.id;
+            })
+            .catch(error => console.error('Error:', error));
     function logout() {
         fetch('/logout', { method: 'POST' })
             .then(() => {

@@ -39,6 +39,7 @@ app.use('/api/bares/crear', barRoutes);
 app.use('/api/bares/eliminar/:id', barRoutes);
 app.use('/api/bares/editar/:id', barRoutes);
 app.use('/api/reservas', reservationRoutes);
+app.use('/api/reservas/insertar', reservationRoutes);
 
 // Inicio del servidor
 app.listen(3000, () => {
@@ -108,6 +109,7 @@ app.get('/profile-data', isAuthenticated, async (req, res) => {
     res.status(500).json({ error: 'Error del servidor' });
   }
 });
+
 
 // Ruta de logout
 app.post('/logout', (req, res) => {

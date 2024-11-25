@@ -10,13 +10,14 @@ document.addEventListener('DOMContentLoaded', async () => {
             barCard.innerHTML = `
                 <img src="${'https://via.placeholder.com/150'}" alt="Imagen de ${bar.nombre_bar}" class="bar-image">
                 <h3>${bar.nombre_bar}</h3>
+                <p>ID_Bar: ${bar.id_bar}</p>
                 <p>Ubicación: ${bar.ubicación}</p>
                 <p>Teléfono: ${bar.teléfono}</p>
                 <p>Contacto: ${bar.email_contacto}</p>
                 <p>Descripción: ${bar.descripción}</p>
                 <p>Horario: ${bar.horario_apertura} - ${bar.horario_cierre}</p>
                 <p>Capacidad Máxima: ${bar.capacidad_maxima}</p>
-                <button class="reservar-btn" onclick="mostrarModal()">Reservar</button>
+                <button class="reservar-btn" onclick="mostrarModal(${bar.id_bar})">Reservar</button>
             `;
             baresList.appendChild(barCard);
         });
