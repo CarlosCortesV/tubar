@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Bar</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bares-body">
+    <header class="bares-header"> <!-- Corregido el class del header -->
+        <img src="./img/TuBar Fondo Transparente letras blancas.png" alt="Tubar" class="profile-logo">
+        <nav>
+            <ul class="bares-nav"> <!-- Cambiado el class de "profile-nav" a "bares-nav" -->
+                <li><a href="profile.html">Inicio</a></li>
+                <!-- Menú Desplegable de Bares -->
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Bares</a>
+                    <div class="dropdown-content">
+                        <a href="Bar.html">Crear Bar</a>
+                        <a href="editarBar.html">Editar Bar</a>
+                        <a href="eliminarBar.html">Eliminar Bar</a>
+                    </div>
+                </li>
+                <li><a href="Mesa.html">Mesas</a></li>
+                <li><a href="#Productos">Productos</a></li>
+            </ul>
+        </nav>
+        <!-- Botón de Cerrar Sesión -->
+        <button class="profile-logout-btn" onclick="logout()">Cerrar Sesión</button>
+    </header>
+
+    <main class="bares-main">
+        <h1>Eliminar Bar</h1>
+        <form id="eliminar-bar-form">
+            <div class="bares-input-group">
+                <label for="id-bar">ID del Bar a Eliminar:</label>
+                <input type="number" id="id-bar" name="id-bar" placeholder="ID del bar" required>
+                <span class="error-message" id="error-id-bar"></span>
+            </div>
+
+            <button type="submit" class="bares-btn">Eliminar Bar</button>
+            <div id="form-status"></div>
+        </form>
+    </main>
+
+    <script>
+        document.getElementById('eliminar-bar-form').addEventListener('submit', async function (event) {
+            event.preventDefault();
+            const barId = document.getElementById('id-bar').value;
+
+            try {
+                const response = await fetch(`/api/bares/eliminar/${barId}`, {
+                    method: 'DELETE',
+                });
+
+                if (response.ok) {
+                    document.getElementById('form-status').innerHTML = '<p class="success-message">¡Bar eliminado con éxito!</p>';
+                } else {
+                    document.getElementById('form-status').innerHTML = '<p class="error-message">Error al eliminar el bar. Inténtalo de nuevo.</p>';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('form-status').innerHTML = '<p class="error-message">Ocurrió un error. Inténtalo más tarde.</p>';
+            }
+        });
+
+        function logout() {
+            fetch('/logout', { method: 'POST' })
+                .then(() => {
+                    window.location.href = '/login.html';
+                })
+                .catch(error => console.error('Error al cerrar sesión:', error));
+        }
+    </script>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const barCard = document.createElement('div');
             barCard.classList.add('card');
             barCard.innerHTML = `
-                <img src="${bar.imagen_url || 'https://via.placeholder.com/150'}" alt="Imagen de ${bar.nombre_bar}" class="bar-image">
+                <img src="${'https://via.placeholder.com/150'}" alt="Imagen de ${bar.nombre_bar}" class="bar-image">
                 <h3>${bar.nombre_bar}</h3>
                 <p>Ubicación: ${bar.ubicación}</p>
                 <p>Teléfono: ${bar.teléfono}</p>

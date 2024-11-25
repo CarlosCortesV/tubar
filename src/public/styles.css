@@ -84,7 +84,7 @@ section {
     flex-wrap: wrap;
     gap: 16px;
     justify-content: center; 
-    margin-top: 10%;
+    margin-top: 5%;
     margin-bottom: 10%;
 }
 .card {
@@ -106,6 +106,59 @@ section {
     width: 400px;
     max-width: calc(33.333% - 32px); /* Máximo ancho por tarjeta */
 }
+/* Estilos del menú desplegable */
+.bares-nav li {
+    display: inline-block;
+    position: relative;
+}
+
+.bares-nav a {
+    text-decoration: none;
+    padding: 15px;
+    color: white;
+    display: block;
+}
+
+.bares-nav .dropdown {
+    position: relative;
+}
+
+.bares-nav .dropdown .dropbtn {
+
+    color: white;
+    padding: 14px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+
+/* Contenido del menú desplegable */
+.bares-nav .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.bares-nav .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.bares-nav .dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Mostrar el menú al pasar el mouse */
+.bares-nav .dropdown:hover .dropdown-content {
+    display: block;
+}
+
 .bar-image {
     width: 100%;
     height: auto;
@@ -512,7 +565,7 @@ h2 {
 /* Contenedor del perfil */
 .profile-container {
     text-align: center;
-    margin: 100px auto;
+    margin: 10% auto;
     background: #333; /* Fondo negro */
     color: #fff; /* Texto blanco */
     padding: 20px;
@@ -598,12 +651,22 @@ h2 {
 /* Formulario */
 .bares-main {
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
     padding: 30px;
     width: 100%;
     box-sizing: border-box;
+    min-height: 100vh;
+}
+.bares-main1 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px;
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 100vh;
+    margin-top: 10%;
 }
 
 .bares-form {
@@ -615,6 +678,7 @@ h2 {
     max-width: 450px;
     animation: fadeIn 1s ease-in-out;
 }
+
 
 .bares-input-group {
     margin-bottom: 20px;

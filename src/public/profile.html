@@ -8,13 +8,20 @@
     <link rel="shortcut icon" href="./img/TuBar Fondo Transparente letras blancas.png" />
 </head>
 <body data-username="adminbar">
-    <!-- Encabezado -->
-    <header class="profile-header">
+    <header class="bares-header"> <!-- Corregido el class del header -->
         <img src="./img/TuBar Fondo Transparente letras blancas.png" alt="Tubar" class="profile-logo">
         <nav>
-            <ul class="profile-nav">
-                <li><a href="/">Inicio</a></li>
-                <li id="menu-bares" style="display: none;"><a href="Bar.html">Bares</a></li>
+            <ul class="bares-nav"> <!-- Cambiado el class de "profile-nav" a "bares-nav" -->
+                <li><a href="profile.html">Inicio</a></li>
+                <!-- Menú Desplegable de Bares -->
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Bares</a>
+                    <div class="dropdown-content">
+                        <a href="Bar.html">Crear Bar</a>
+                        <a href="editarBar.html">Editar Bar</a>
+                        <a href="eliminarBar.html">Eliminar Bar</a>
+                    </div>
+                </li>
                 <li><a href="Mesa.html">Mesas</a></li>
                 <li><a href="#Productos">Productos</a></li>
             </ul>

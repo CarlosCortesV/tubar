@@ -36,6 +36,8 @@ const barRoutes = require('./routes/barRoutes');
 const reservationRoutes = require('./routes/reservationRoutes');
 app.use('/api/bares', barRoutes);
 app.use('/api/bares/crear', barRoutes);
+app.use('/api/bares/eliminar/:id', barRoutes);
+app.use('/api/bares/editar/:id', barRoutes);
 app.use('/api/reservas', reservationRoutes);
 
 // Inicio del servidor
