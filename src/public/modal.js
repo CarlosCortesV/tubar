@@ -26,55 +26,32 @@ function formatTime(hora) {
 }
 
 // Función para capturar los datos del formulario en el modal
-async function confirmarReserva() {
-    // Captura de los valores de los inputs
-    const idMesa = document.getElementById('id-mesa').value;
-    const fechaReserva = document.getElementById('fecha-reserva').value;
-    const horaReserva = document.getElementById('hora-reserva').value;
-    const numeroPersonas = document.getElementById('numero-personas').value;
-    const idUsuario = document.getElementById('userid').value;
-    const idBar = document.getElementById('id_bar').value;
+function confirmarReserva() {
+    const id_bar = 1
+    const id_mesa = document.getElementById('id-mesa').value;
+    const fecha_reserva = document.getElementById('fecha-reserva').value;
+    const hora_reserva = formatTime(document.getElementById('hora-reserva').value);
+    const numero_personas = document.getElementById('numero-personas').value;
 
-    // Muestra los datos en la consola (puedes hacer otra acción aquí)
-    console.log(`ID Usuario: ${idUsuario}`);
-    console.log(`ID Mesa: ${idMesa}`);
-    console.log(`Fecha Reserva: ${fechaReserva}`);
-    console.log(`Hora Reserva: ${horaReserva}`);
-    console.log(`Número de Personas: ${numeroPersonas}`);
-
-    // Enviar los datos al servidor (API para insertar la reserva)
-    try {
-        const response = await fetch('/api/reservar/insertar', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                id_usuario: idUsuario,
-                id_bar: idBar,  // Suponiendo que tienes el id_bar, lo puedes obtener de algún lado, como del formulario
-                id_mesa: idMesa,
-                fecha_reserva: fechaReserva,
-                hora_reserva: horaReserva,
-                numero_personas: numeroPersonas
-            })
-        });
-
-        const result = await response.json();
-
-        if (response.ok) {
-            console.log('Reserva creada:', result);
-            alert('Reserva realizada con éxito');
-        } else {
-            console.error('Error al crear la reserva:', result);
-            alert('Error al realizar la reserva');
-        }
-    } catch (error) {
-        console.error('Error en la solicitud:', error);
-        alert('Hubo un problema al realizar la reserva');
+    if (!id_bar || !id_mesa || !fecha_reserva || !hora_reserva || !numero_personas) {
+        alert("Por favor, completa todos los campos.");
+        return;
     }
 
-    // Cerrar el modal después de la reserva
-    cerrarModal();
+    fetch('/api/reservas/insertar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id_bar, id_mesa, fecha_reserva, hora_reserva, numero_personas })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.message) {
+            cerrarModal();
+        } else if (data.error) {
+            alert("Gracias!");
+        }
+    })
+    .catch(error => console.error("Error en la solicitud:", error));
 }
 
 
