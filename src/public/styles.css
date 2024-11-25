@@ -84,6 +84,8 @@ section {
     flex-wrap: wrap;
     gap: 16px;
     justify-content: center; 
+    margin-top: 10%;
+    margin-bottom: 10%;
 }
 .card {
     background-color: #333;
