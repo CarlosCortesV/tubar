@@ -53,10 +53,6 @@ app.post('/login', async (req, res) => {
       res.status(500).send('Error del servidor');
   }
 });
-app.get('/profile', (req, res) => {
-  if (!req.session.user) {
-      return res.status(401).json({ error: 'No autenticado' });
-  }
 
   // Si está autenticado, muestra los datos del usuario
   res.json({

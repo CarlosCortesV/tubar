@@ -542,10 +542,8 @@ h2 {
     height: 100vh;
     flex-direction: column;
     box-sizing: border-box;
-    padding-top: 300px; /* Aumento el espacio en la parte superior para separar más el formulario */
 }
 
-/* Encabezado */
 .bares-header {
     background-color: #333;
     color: #222;
