@@ -22,7 +22,7 @@
                     </div>
                 </li>
                 <li><a href="Mesa.html">Mesas</a></li>
-                <li><a href="#Productos">Productos</a></li>
+                <li><a href="reserva.html">Reserva</a></li>
             </ul>
         </nav>
         <!-- Botón de Cerrar Sesión -->
@@ -94,9 +94,11 @@
                 telefono: document.getElementById('telefono-bar').value,
                 email_contacto: document.getElementById('email-bar').value,
                 descripcion: document.getElementById('descripcion-bar').value,
+                horario_apertura: document.getElementById('horario-apertura').value,
+                horario_cierre: document.getElementById('horario-cierre').value,
                 capacidad_maxima: document.getElementById('capacidad-bar').value
+                
             };
-
             try {
                 const response = await fetch('/api/bares/crear', {
                     method: 'POST',

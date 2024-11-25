@@ -84,7 +84,6 @@ section {
     flex-wrap: wrap;
     gap: 16px;
     justify-content: center; 
-    margin-top: 5%;
     margin-bottom: 10%;
 }
 .card {
@@ -186,6 +185,14 @@ section {
     font-weight: 600;
 }
 
+.reserva{
+    margin-top: 15%;
+    margin-bottom: 5%;
+    text-align: center;
+    color: #f1d024;
+    font-size: 65px;
+    font-weight: 900;
+}
 .reservar-btn {
     background-color: #ff6347;
     color: #fff;

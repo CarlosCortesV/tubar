@@ -22,7 +22,7 @@
                     </div>
                 </li>
                 <li><a href="Mesa.html">Mesas</a></li>
-                <li><a href="#Productos">Productos</a></li>
+                <li><a href="reserva.html">Reserva</a></li>
             </ul>
         </nav>
         <!-- Botón de Cerrar Sesión -->
@@ -31,11 +31,11 @@
 
     <main class="bares-main1">
         <h1>Editar Bar</h1>
-        <form class="bares-form" id="edit-bar-form">
+        <form class="bares-form" id="bar-form">
             <div class="bares-input-group">
                 <label for="bar-id">ID del Bar:</label>
                 <input type="number" id="bar-id" name="bar-id" required placeholder="ID del Bar a editar">
-                <span class="error-message" id="error-nombre"></span>
+                <span class="error-message" id="error-id"></span>
             </div>
             <div class="bares-input-group">
                 <label for="nombre-bar">Nombre del Bar:</label>
@@ -84,36 +84,27 @@
                 <input type="number" id="capacidad-bar" name="capacidad-bar" placeholder="Capacidad máxima" required>
                 <span class="error-message" id="error-capacidad"></span>
             </div>
+
             <button type="submit" class="bares-btn">Guardar Bar</button>
             <div id="form-status"></div>
         </form>
     </main>
 
     <script>
-        document.getElementById('edit-bar-form').addEventListener('submit', async function (event) {
+        document.getElementById('bar-form').addEventListener('submit', async function (event) {
             event.preventDefault();
-
             const barId = document.getElementById('bar-id').value;
-            const nombreBar = document.getElementById('nombre-bar').value;
-            const ubicacion = document.getElementById('ubicacion-bar').value;
-            const telefono = document.getElementById('telefono-bar').value;
-            const email = document.getElementById('email-bar').value;
-            const descripcion = document.getElementById('descripcion-bar').value;
-            const horarioApertura = document.getElementById('horario-apertura').value;
-            const horarioCierre = document.getElementById('horario-cierre').value;
-            const capacidadMaxima = document.getElementById('capacidad-bar').value;
-
             const barData = {
-                nombre_bar: nombreBar,
-                ubicacion: ubicacion,
-                telefono: telefono,
-                email_contacto: email,
-                descripcion: descripcion,
-                horario_apertura: horarioApertura,
-                horario_cierre: horarioCierre,
-                capacidad_maxima: capacidadMaxima,
+                nombre_bar: document.getElementById('nombre-bar').value,
+                ubicacion: document.getElementById('ubicacion-bar').value,
+                telefono: document.getElementById('telefono-bar').value,
+                email_contacto: document.getElementById('email-bar').value,
+                descripcion: document.getElementById('descripcion-bar').value,
+                horario_apertura: document.getElementById('horario-apertura').value,
+                horario_cierre: document.getElementById('horario-cierre').value,
+                capacidad_maxima: document.getElementById('capacidad-bar').value
+                
             };
-
             try {
                 const response = await fetch(`/api/bares/editar/${barId}`, {
                     method: 'PUT',
@@ -134,7 +125,54 @@
                 document.getElementById('form-status').innerHTML = '<p class="error-message">Ocurrió un error. Inténtalo más tarde.</p>';
             }
         });
+        document.getElementById('bar-form').addEventListener('submit', function (event) {
+            event.preventDefault(); // Evita que el formulario se envíe de forma convencional
 
+            // Limpiar mensajes de error
+            clearErrorMessages();
+
+            // Validar campos
+            let valid = true;
+            valid &= validateField('nombre-bar', /^[a-zA-Z\s]{3,100}$/, 'error-nombre', 'Por favor ingrese un nombre válido');
+            valid &= validateField('ubicacion-bar', /^[a-zA-Z0-9\s,\.]{5,255}$/, 'error-ubicacion', 'Por favor ingrese una ubicación válida');
+            valid &= validateField('telefono-bar', /^[0-9]{10}$/, 'error-telefono', 'El teléfono debe tener 10 dígitos');
+            valid &= validateField('email-bar', /^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'error-email', 'Por favor ingrese un correo electrónico válido');
+            valid &= validateField('descripcion-bar', /^.{10,500}$/, 'error-descripcion', 'La descripción debe tener entre 10 y 500 caracteres');
+            valid &= validateField('horario-apertura', /.+/, 'error-apertura', 'Por favor ingrese un horario de apertura');
+            valid &= validateField('horario-cierre', /.+/, 'error-cierre', 'Por favor ingrese un horario de cierre');
+            valid &= validateField('capacidad-bar', /^[0-9]{1,4}$/, 'error-capacidad', 'La capacidad máxima debe ser un número válido');
+
+            if (valid) {
+                // Si es válido, mostrar el mensaje de éxito
+                    
+
+                // Aquí podrías hacer una solicitud al servidor para guardar el bar (por ejemplo, usando fetch).
+            } else {
+                // Si no es válido, mostrar un mensaje de error general
+                document.getElementById('form-status').innerHTML = `<p class="error-message">Por favor, corrija los errores en el formulario.</p>`;
+            }
+        });
+
+        function validateField(id, regex, errorId, errorMessage) {
+            const field = document.getElementById(id);
+            const errorSpan = document.getElementById(errorId);
+            if (!regex.test(field.value)) {
+                errorSpan.textContent = errorMessage;
+                field.classList.add('input-error');
+                return false;
+            } else {
+                errorSpan.textContent = '';
+                field.classList.remove('input-error');
+                return true;
+            }
+        }
+
+        function clearErrorMessages() {
+            const errorMessages = document.querySelectorAll('.error-message');
+            errorMessages.forEach(msg => msg.textContent = '');
+            const inputFields = document.querySelectorAll('input, textarea');
+            inputFields.forEach(field => field.classList.remove('input-error'));
+        }
         function logout() {
             fetch('/logout', { method: 'POST' })
                 .then(() => {
@@ -143,5 +181,6 @@
                 .catch(error => console.error('Error al cerrar sesión:', error));
         }
     </script>
+    <script src="app.js"></script>
 </body>
 </html>

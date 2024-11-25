@@ -9,23 +9,29 @@
     <link rel="shortcut icon" href="./img/TuBar Fondo Transparente letras blancas.png" />
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="./img/TuBar Fondo Transparente letras blancas.png" alt="Tubar">
-        </div>
+    <header class="bares-header"> <!-- Corregido el class del header -->
+        <img src="./img/TuBar Fondo Transparente letras blancas.png" alt="Tubar" class="profile-logo">
         <nav>
-            <ul>
-                <li><a href="/index.html">Inicio</a></li>
-                <li><a href="reserva.html">Reservas</a></li>
-                <li>
-                    <a href="login.html" class="login-icon">
-                        <i class="fas fa-user"></i> <!-- Icono de Login -->
-                    </a>
+            <ul class="bares-nav"> <!-- Cambiado el class de "profile-nav" a "bares-nav" -->
+                <li><a href="profile.html">Inicio</a></li>
+                <!-- Menú Desplegable de Bares -->
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Bares</a>
+                    <div class="dropdown-content">
+                        <a href="Bar.html">Crear Bar</a>
+                        <a href="editarBar.html">Editar Bar</a>
+                        <a href="eliminarBar.html">Eliminar Bar</a>
+                    </div>
                 </li>
+                <li><a href="Mesa.html">Mesas</a></li>
+                <li><a href="reserva.html">Reserva</a></li>
             </ul>
         </nav>
+        <!-- Botón de Cerrar Sesión -->
+        <button class="profile-logout-btn" onclick="logout()">Cerrar Sesión</button>
     </header>
-    <div id="card-container"></div>
+    <h1 class="reserva">Reserva TuBar, YA!</h1>
+    <div id="card-container" class="card-container-class"></div>
 
     <footer>
         <p>&copy; 2024 Tubar. Todos los derechos reservados.</p>
@@ -46,7 +52,15 @@
         <button class="modalbar-btn" onclick="confirmarReserva()">Confirmar Reserva</button>
     </div>
 </div>
-
+    <script>
+    function logout() {
+        fetch('/logout', { method: 'POST' })
+            .then(() => {
+                window.location.href = '/login.html';
+            })
+            .catch(error => console.error('Error al cerrar sesión:', error));
+    }
+    </script>
     <script src="app.js"></script>
     <script src="modal.js"></script>
 </body>
