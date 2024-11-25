@@ -122,6 +122,7 @@ section {
     padding: 0 1rem;
     color: #ccc;
     font-size: 0.9rem;
+    font-weight: 600;
 }
 
 .reservar-btn {
@@ -150,7 +151,7 @@ section {
 }
 
 .text-home{
-    color: #fff;
+    color: #f1d024;
     font-size: 85px;
     font-weight: 900;
 }
@@ -251,7 +252,7 @@ footer {
 
 
 /* Estilos del login */
-body.login-body {
+.login-body {
     font-family: Arial, sans-serif;
     background-color: #222; /* Color de fondo del CSS proporcionado */
     color: #f4f4f4;
@@ -461,7 +462,7 @@ h2 {
 }
 
 .profile-logo {
-    height: 100px; /* Tamaño del logo */
+    height: 150px; /* Tamaño del logo */
 }
 
 .profile-nav {
@@ -542,8 +543,10 @@ h2 {
     height: 100vh;
     flex-direction: column;
     box-sizing: border-box;
+    padding-top: 300px; /* Aumento el espacio en la parte superior para separar más el formulario */
 }
 
+/* Encabezado */
 .bares-header {
     background-color: #333;
     color: #222;
@@ -713,7 +716,6 @@ h2 {
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-    margin-top: 20px;
 }
 
 .mesas-body {
@@ -765,3 +767,4 @@ h2 {
 .crear-btn:hover {
     background-color: #e55347;
 }
+    

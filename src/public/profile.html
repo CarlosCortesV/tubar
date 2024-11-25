@@ -7,16 +7,16 @@
     <link rel="stylesheet" href="./styles.css">
     <link rel="shortcut icon" href="./img/TuBar Fondo Transparente letras blancas.png" />
 </head>
-<body>
+<body data-username="adminbar">
     <!-- Encabezado -->
     <header class="profile-header">
         <img src="./img/TuBar Fondo Transparente letras blancas.png" alt="Tubar" class="profile-logo">
         <nav>
             <ul class="profile-nav">
-                <li><a href="#home">Inicio</a></li>
-                <li><a href="Bar.html">Bares</a></li>
+                <li><a href="/">Inicio</a></li>
+                <li id="menu-bares" style="display: none;"><a href="Bar.html">Bares</a></li>
                 <li><a href="Mesa.html">Mesas</a></li>
-                <li><a href="#Productos">productos</a></li>
+                <li><a href="#Productos">Productos</a></li>
             </ul>
         </nav>
         <!-- Botón de Cerrar Sesión -->
@@ -32,36 +32,50 @@
         <h2>Información del Usuario</h2>
         <p>Email: <span id="user-email"></span></p>
         <p>Teléfono: <span id="user-phone"></span></p>
-        <p>Fecha de Registro: <span id="user-registration"></span></p>
     </div>
 
+    <!-- Scripts -->
     <script>
-        // Trae los datos del usuario desde el servidor
-        fetch('/profile')
+        // Obtener datos del usuario desde el backend
+        fetch('/profile-data')
             .then(response => {
                 if (response.ok) {
-                    return response.json();
+                    return response.json(); // Retorna el JSON si la respuesta es exitosa
                 } else {
-                    window.location.href = '/login.html'; // Redirige si no está autenticado
+                    // Redirigir al login si no está autenticado
+                    window.location.href = '/login.html';
                 }
             })
             .then(user => {
+                // Mostrar los datos del usuario en el perfil
                 document.getElementById('username').textContent = user.username;
                 document.getElementById('userid').textContent = user.id;
                 document.getElementById('user-email').textContent = user.email || 'No especificado';
                 document.getElementById('user-phone').textContent = user.phone || 'No especificado';
-                document.getElementById('user-registration').textContent = user.registrationDate || 'No disponible';
             })
             .catch(error => console.error('Error:', error));
 
         // Función de cerrar sesión
         function logout() {
-            fetch('/logout', { method: 'POST' }) // Simula un endpoint de logout
+            fetch('/logout', { method: 'POST' }) // Llama al endpoint de logout
                 .then(() => {
-                    window.location.href = '/login.html';
+                    window.location.href = '/login.html'; // Redirige al login tras cerrar sesión
                 })
                 .catch(error => console.error('Error al cerrar sesión:', error));
         }
+            document.addEventListener('DOMContentLoaded', () => {
+        // Obtener el nombre de usuario desde el atributo data
+        const username = document.body.getAttribute('data-username');
+
+        // Mostrar u ocultar el menú de bares según el nombre de usuario
+        const menuBares = document.getElementById('menu-bares');
+        if (username === 'adminbar') {
+            menuBares.style.display = 'block';
+        } else {
+            menuBares.style.display = 'none';
+        }
+    });
+
     </script>
 </body>
 </html>
