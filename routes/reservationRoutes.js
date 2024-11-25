@@ -5,18 +5,17 @@ const dbConfig = require('../config/dbConfig');
 
 // Endpoint para insertar reservas
 router.post('/insertar', async (req, res) => {
-    const { id_bar, id_mesa, fecha_reserva, hora_reserva, numero_personas } = req.body;
+    const { id_bar,id_usuario,id_mesa, fecha_reserva, hora_reserva, numero_personas } = req.body;
 
     console.log("Datos recibidos en el backend:", req.body);
 
-    if (!id_bar || !id_mesa || !fecha_reserva || !hora_reserva || !numero_personas) {
+    if (!id_bar || !id_usuario || !id_mesa || !fecha_reserva || !hora_reserva || !numero_personas) {
         console.error("Faltan campos obligatorios.");
         return res.status(400).json({ error: "Todos los campos son obligatorios." });
     }
 
     // Continuar con la lógica original
     const estado_reserva = "Pendiente";
-    const id_usuario = req.session?.userId || 1; // ID de usuario simulado
 
     try {
         let pool = await sql.connect(dbConfig);

@@ -1,21 +1,24 @@
 // JavaScript para abrir y cerrar el modal
-function mostrarModal() {
-    document.getElementById('modal').style.display = 'block';
+function mostrarModal(barId) {
+    // Almacenar el barId en el modal
+    modal.setAttribute('data-bar-id', barId);
+
+    // Mostrar el modal
+    modal.style.display = 'block';
 }
 
-function cerrarModal() {
-    document.getElementById('modal').style.display = 'none';
-}
 
-// Cerrar modal al hacer clic en la X
-document.querySelector('.close').addEventListener('click', cerrarModal);
+closeBtn.onclick = function() {
+    modal.style.display = 'none';
+    modal.removeAttribute('data-bar-id'); // Limpia el barId del modal al cerrarlo
+};
 
-// Cerrar modal si el usuario hace clic fuera del contenido del modal
 window.onclick = function(event) {
-    if (event.target == document.getElementById('modal')) {
-        cerrarModal();
+    if (event.target == modal) {
+        modal.style.display = 'none';
+        modal.removeAttribute('data-bar-id'); // Limpia el barId del modal
     }
-}
+};
 function formatTime(hora) {
     // Asegura que la hora tiene el formato correcto
     const parts = hora.split(':');
@@ -27,13 +30,14 @@ function formatTime(hora) {
 
 // Función para capturar los datos del formulario en el modal
 function confirmarReserva() {
-    const id_bar = 1
+    const id_bar = modal.getAttribute('data-bar-id');
+    const id_usuario = document.getElementById('userid').textContent;
     const id_mesa = document.getElementById('id-mesa').value;
     const fecha_reserva = document.getElementById('fecha-reserva').value;
     const hora_reserva = formatTime(document.getElementById('hora-reserva').value);
     const numero_personas = document.getElementById('numero-personas').value;
 
-    if (!id_bar || !id_mesa || !fecha_reserva || !hora_reserva || !numero_personas) {
+    if (!id_bar || !id_usuario || !id_mesa || !fecha_reserva || !hora_reserva || !numero_personas) {
         alert("Por favor, completa todos los campos.");
         return;
     }
@@ -41,14 +45,16 @@ function confirmarReserva() {
     fetch('/api/reservas/insertar', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id_bar, id_mesa, fecha_reserva, hora_reserva, numero_personas })
+        body: JSON.stringify({ id_bar, id_usuario, id_mesa, fecha_reserva, hora_reserva, numero_personas })
     })
     .then(response => response.json())
     .then(data => {
         if (data.message) {
-            cerrarModal();
+            alert("Reserva creada con éxito.");
+            modal.style.display = 'none';
+            modal.removeAttribute('data-bar-id');
         } else if (data.error) {
-            alert("Gracias!");
+            alert("Error al crear la reserva.");
         }
     })
     .catch(error => console.error("Error en la solicitud:", error));
